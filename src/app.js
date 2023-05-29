@@ -13,7 +13,7 @@ app.use( express.json() );
 // Directorio Público
 app.use( express.static('public') );
 
-app.use( '/selecciones', require('./routes/auth.routes'));
+app.use( '/selecciones', require('./routes/selecciones.routes'));
 
 
 app.listen( PORT, () => {
