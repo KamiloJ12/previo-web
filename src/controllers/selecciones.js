@@ -73,13 +73,27 @@ const getResultadoById =  async (req, res) => {
   const { id } = req.params;
   try {
     const resultados = await Resultado.findAll({
-      where: { seleccionId: id },
+      where: { seleccion_id: id },
       include: Seleccion,
     });
     res.json(resultados);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error al obtener los resultados' });
+  }
+};
+
+const getSeleccionesByGrupo =  async (req, res) => {
+  const { grupo } = req.params;
+  try {
+    const selecciones = await Seleccion.findAll({
+      where: { grupo: grupo },
+      include: Seleccion
+    });
+    res.json(selecciones);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener las selecciones' });
   }
 };
 
